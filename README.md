@@ -82,6 +82,23 @@ You can edit the configuration in $PACKETRUSHER/config/config.yml as specified [
 More complex scenarios are possible using `sudo ./packetrusher multi-ue`, see `./packetrusher multi-ue --help` for more details.   
 For more details on the installation, configuration or usage, you may refer to the [wiki](https://github.com/HewlettPackard/PacketRusher/wiki).
 
+## Cleanup and Management
+
+The scripts that help manage PacketRusher network resources (status checks and cleanup) have been moved to a dedicated document for clarity.
+
+Important: see the scripts README for full usage and examples:
+
+> [Scripts documentation → scripts/script_README.md](scripts/script_README.md)
+
+You can still run the scripts from `scripts/`, for example:
+
+```bash
+./scripts/show_ue_status.sh
+sudo ./scripts/cleanup_ue_interfaces.sh
+```
+
+For detailed workflows, connectivity testing options, and troubleshooting, open `scripts/script_README.md`.
+
 ## Contributing
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great!   
 You can review our [contributing guide](CONTRIBUTING.md).
