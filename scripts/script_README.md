@@ -33,6 +33,28 @@ Features:
 - Customizable ping target and count
 - Real-time RX/TX traffic monitoring via `ue_tx_rx_monitor.py` (shows packets/sec and bytes/sec)
 
+#### UE TX/RX monitor — output columns
+
+When you run `./scripts/ue_tx_rx_monitor.py` it prints a table with the following columns:
+
+- Interface: UE interface name (e.g. `val0000000001`).
+- RX pkts: cumulative number of received packets on the interface (since the interface started).
+- r/s: receive packets per second (instantaneous rate calculated from the sample delta).
+- RX Δ: number of bytes received during the sample interval (human-readable, e.g. `1.2KB`).
+- rb/s: receive bytes per second (instantaneous bytes/s calculated from the sample delta).
+- RX B: cumulative received bytes (human-readable total since interface start).
+- TX pkts: cumulative number of transmitted packets on the interface.
+- t/s: transmit packets per second (instantaneous rate).
+- TX Δ: number of bytes transmitted during the sample interval (human-readable).
+- tb/s: transmit bytes per second (instantaneous bytes/s).
+- TX B: cumulative transmitted bytes (human-readable total since interface start).
+
+Notes:
+- Rates (`r/s`, `rb/s`, `t/s`, `tb/s`) are computed as (delta / interval). Default interval is 1 second and can be changed with `-i`.
+- Delta columns (`RX Δ`, `TX Δ`) show the bytes transferred during the last sample and are presented in a human-friendly unit.
+- Cumulative columns (`RX pkts`, `RX B`, `TX pkts`, `TX B`) are monotonically increasing counters read from `/sys/class/net/<iface>/statistics`.
+
+
 Example output and usage details are shown when running the script with `--help`.
 
 ### UE Interface Cleanup Script
