@@ -95,6 +95,11 @@ You can still run the scripts from `scripts/`, for example:
 ```bash
 ./scripts/show_ue_status.sh
 sudo ./scripts/cleanup_ue_interfaces.sh
+# Add or remove a range of IP addresses for multiple UEs (requires root)
+# Add 10 IPs starting at the default ${NET_PREFIX}.${START_OCTET} (example):
+./scripts/new_IP_for_multipleUE.sh -n 10
+# Remove the configured range (example):
+sudo ./scripts/new_IP_for_multipleUE.sh delete
 ```
 
 For detailed workflows, connectivity testing options, and troubleshooting, open `scripts/script_README.md`.
