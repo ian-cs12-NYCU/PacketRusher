@@ -1,3 +1,32 @@
+# Scripts Quick Reference
+
+This file provides short, focused usage notes for scripts under `scripts/`.
+
+## ue_packet_monitor.py (quick)
+
+- Path: `scripts/ue_packet_monitor.py`
+- Purpose: Monitor packets sent by a specific UE (select by source IP) and print destination addresses in real time.
+- Modes:
+  - Simple (default): `IP.src ---> IP.dst [Protocol]`
+  - 5-tuple: `IP:Port ---> IP:Port [Protocol]`
+- Run (recommended interactive selection):
+  ```bash
+  sudo ./scripts/ue_packet_monitor.py --select
+  ```
+- Run (by IP):
+  ```bash
+  sudo ./scripts/ue_packet_monitor.py --src-ip 10.60.100.1
+  ```
+- Notes:
+  - Requires `tshark` (install with `sudo apt-get install tshark`) and root privileges for capture.
+  - Uses `stdbuf` + a display filter for reliable, line-buffered real-time output on raw IP interfaces.
+
+## Quick troubleshooting
+
+- If you see no packets: verify the target IP and traffic (e.g., `ip addr show <iface>` and `tcpdump -i <iface> 'src <ip>'`).
+- Always run the script with `sudo` to avoid permission issues.
+
+For the original full usage details, examples, and troubleshooting steps see the script itself (`scripts/ue_packet_monitor.py`).
 ## Cleanup and Management (PacketRusher scripts)
 
 This document covers the scripts provided in the `scripts/` directory for checking UE status and cleaning up network resources created by PacketRusher.
